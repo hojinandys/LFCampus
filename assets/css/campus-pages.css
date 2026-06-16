@@ -1,0 +1,359 @@
+@font-face {
+  font-family: 'GMarketSans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GMarketSans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GMarketSans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+body {
+  font-family: 'GMarketSans', "Open Sans", sans-serif;
+  color: #444444;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: 'GMarketSans', "Open Sans", sans-serif;
+  word-break: keep-all;
+}
+
+.header .logo img {
+  max-height: 52px;
+  width: auto;
+}
+
+.header .navbar a,
+.header .navbar a:focus {
+  font-family: 'GMarketSans', "Open Sans", sans-serif;
+  font-weight: 500 !important;
+}
+
+.page-hero {
+  padding: 150px 0 70px;
+  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  text-align: center;
+}
+
+.page-hero h1 {
+  color: #012970;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.page-section {
+  padding: 70px 0;
+}
+
+.page-card {
+  height: 100%;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(1, 41, 112, 0.08);
+}
+
+.page-card h3 {
+  color: #012970;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.page-card p,
+.page-card li {
+  line-height: 1.75;
+}
+
+.page-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.page-badge.lost {
+  background: #ffecdf;
+  color: #ff771d;
+}
+
+.page-badge.found {
+  background: #e6ffed;
+  color: #16a34a;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  background: #4154f1;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.page-btn:hover {
+  color: #ffffff;
+  background: #5969f3;
+}
+
+.page-filter {
+  padding: 24px;
+  margin-bottom: 28px;
+  border-radius: 12px;
+  background: #f6f9ff;
+}
+
+.detail-image {
+  min-height: 300px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eef3ff, #d9e4ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4154f1;
+  font-size: 76px;
+}
+
+.info-list {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.info-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1f7;
+}
+
+.info-list li:last-child {
+  border-bottom: 0;
+}
+
+/* 채팅 팝업 */
+.chat-section {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 24px 32px;
+  background: rgba(6, 29, 59, 0.48);
+  backdrop-filter: blur(8px);
+}
+
+.chat-section.is-open {
+  display: flex;
+}
+
+body.chat-modal-open {
+  overflow: hidden;
+}
+
+.chat-modal-panel {
+  position: relative;
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  background: linear-gradient(180deg, #f3f8ff 0%, #ffffff 100%);
+  border-radius: 24px;
+  padding: 44px 36px 36px;
+  box-shadow: 0 30px 80px rgba(1, 41, 112, 0.28);
+}
+
+.chat-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #061d3b;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 10px 25px rgba(1, 41, 112, 0.14);
+}
+
+.chat-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.chat-title h2 {
+  color: #111111;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.chat-title h2 span,
+.chat-rule-title h3 span {
+  color: #2478bd;
+}
+
+.chat-item-card {
+  height: 100%;
+  padding: 24px;
+  border-radius: 24px;
+  background: #061d3b;
+  color: #ffffff;
+  box-shadow: 0 20px 45px rgba(1, 41, 112, 0.18);
+}
+
+.chat-item-card h3 {
+  color: #ffffff;
+}
+
+.chat-image-box {
+  height: 190px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f3f3f3, #d9d9d9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.chat-image-box i {
+  color: #aaaaaa;
+  font-size: 62px;
+}
+
+.chat-request-btn {
+  display: block;
+  text-align: center;
+  background: #2478bd;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 13px 15px;
+  font-weight: 500;
+}
+
+.chat-box,
+.chat-rule-card {
+  height: 100%;
+  padding: 28px;
+  border: 4px solid #9ccbf0;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(1, 41, 112, 0.08);
+}
+
+.chat-box {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box h3 {
+  text-align: center;
+  color: #2478bd;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.chat-message-space {
+  flex: 1;
+}
+
+.chat-input-preview {
+  display: flex;
+  gap: 12px;
+}
+
+.chat-input-preview input {
+  flex: 1;
+  border: 3px solid #d1d5db;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 16px;
+}
+
+.chat-input-preview button {
+  border: 0;
+  background: #2478bd;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0 30px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.chat-rule-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.chat-rule-title i {
+  color: #2478bd;
+  font-size: 34px;
+}
+
+.chat-rule-title h3 {
+  margin: 0;
+  color: #111111;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.chat-rule-card li {
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 130px 0 50px;
+  }
+
+  .page-hero h1 {
+    font-size: 32px;
+  }
+
+  .chat-modal-panel {
+    max-height: calc(100vh - 104px);
+    padding: 40px 20px 24px;
+  }
+
+  .chat-input-preview {
+    flex-direction: column;
+  }
+
+  .chat-input-preview button {
+    padding: 12px;
+  }
+}

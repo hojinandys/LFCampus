@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>찾아줘 캠퍼스! - 캠퍼스 분실물 매칭 홈페이지</title>
+  <meta content="대학생을 위한 교내 분실물 및 습득물 안내 홈페이지" name="description">
+  <meta content="분실물, 습득물, 캠퍼스, 대학교, 찾아줘 캠퍼스" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Nunito|Poppins" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- 추가 CSS -->
+  <style>
+    /* G마켓 산스 폰트 적용 */
+    @font-face {
+      font-family: 'GMarketSans';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GMarketSans';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-weight: 500;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GMarketSans';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'GMarketSans', "Open Sans", sans-serif;
+      font-weight: 500;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .section-header p,
+    .section-header h2 {
+      font-family: 'GMarketSans', "Open Sans", sans-serif;
+      word-break: keep-all;
+    }
+
+    p {
+      word-break: keep-all;
+    }
+
+    /* 헤더 메뉴는 G마켓 산스 Medium으로 적용 */
+    .header .navbar a,
+    .header .navbar a:focus {
+      font-family: 'GMarketSans', "Open Sans", sans-serif;
+      font-weight: 500 !important;
+    }
+
+    .header .navbar .getstarted,
+    .header .navbar .getstarted:focus {
+      font-weight: 500 !important;
+    }
+
+    /* 헤더 로고 이미지 크기 */
+    .logo img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .header .logo img {
+      max-height: 52px;
+    }
+
+    .footer .logo img {
+      max-height: 48px;
+      width: auto;
+    }
+
+    /* 메인 첫 화면 문장 줄바꿈 정리 */
+    .hero h1,
+    .hero h2 {
+      word-break: keep-all;
+    }
+
+    .hero h1 {
+      line-height: 1.25;
+    }
+
+    .hero h2 {
+      line-height: 1.6;
+      max-width: 620px;
+    }
+
+    /* 분실물 목록 위의 간단 검색 영역 */
+    .simple-search-box {
+      background: #f6f9ff;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    /* 분실물·습득물 목록 카드 디자인 */
+    .lost-found-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+      transition: 0.3s;
+    }
+
+    .lost-found-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 0 30px rgba(1, 41, 112, 0.15);
+    }
+
+    .lost-found-icon {
+      font-size: 42px;
+      color: #4154f1;
+      margin-bottom: 15px;
+    }
+
+    .lost-found-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #012970;
+      margin-bottom: 15px;
+    }
+
+    .lost-found-card p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* 분실물/습득물 상태를 구분하는 배지 */
+    .badge-lost {
+      display: inline-block;
+      background: #ffecdf;
+      color: #ff771d;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .badge-found {
+      display: inline-block;
+      background: #e6ffed;
+      color: #16a34a;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* 분실물·습득물 등록 폼 카드 */
+    .register-box {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    }
+
+    /* 등록 폼 상단 제목 */
+    .register-box h3 {
+      color: #012970;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* 등록 폼 상단 설명 문구 */
+    .register-box p {
+      color: #444444;
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto 25px;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .register-box .form-control,
+    .register-box .form-select {
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+    }
+
+    .register-box button {
+      background: #4154f1;
+      border: 0;
+      padding: 12px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: 500;
+    }
+
+    .register-box button:hover {
+      background: #5969f3;
+    }
+
+    /* 채팅 팝업 영역 */
+    .chat-section {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 24px 32px;
+      background: rgba(6, 29, 59, 0.48);
+      backdrop-filter: blur(8px);
+    }
+
+    /* 채팅창이 열렸을 때만 화면에 표시 */
+    .chat-section.is-open {
+      display: flex;
+    }
+
+    /* 채팅창이 열려 있을 때 배경 페이지 스크롤 방지 */
+    body.chat-modal-open {
+      overflow: hidden;
+    }
+
+    /* 채팅창 내부 흰색 패널 */
+    .chat-modal-panel {
+      position: relative;
+      width: min(1180px, 100%);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: linear-gradient(180deg, #f3f8ff 0%, #ffffff 100%);
+      border-radius: 24px;
+      padding: 44px 36px 36px;
+      box-shadow: 0 30px 80px rgba(1, 41, 112, 0.28);
+    }
+
+    /* 채팅창 닫기 버튼 */
+    .chat-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #061d3b;
+      font-size: 24px;
+      line-height: 1;
+      box-shadow: 0 10px 25px rgba(1, 41, 112, 0.14);
+    }
+
+    /* 채팅창 상단 제목 영역 */
+    .chat-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .chat-title h2 {
+      font-size: 46px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 18px;
+    }
+
+    .chat-title h2 span {
+      color: #2478bd;
+    }
+
+    .chat-title p {
+      font-size: 22px;
+      font-weight: 500;
+      color: #111111;
+      margin-bottom: 0;
+    }
+
+    /* 채팅 대상 물건 정보 카드 */
+    .chat-item-card {
+      background: #061d3b;
+      border-radius: 24px;
+      padding: 24px;
+      color: #ffffff;
+      height: 100%;
+      box-shadow: 0 20px 45px rgba(1, 41, 112, 0.18);
+    }
+
+    .chat-image-box {
+      height: 190px;
+      background: linear-gradient(135deg, #f3f3f3, #d9d9d9);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .chat-image-box i {
+      font-size: 62px;
+      color: #aaaaaa;
+    }
+
+    .chat-item-card h3 {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .chat-item-card p {
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .chat-item-card .chat-request-btn {
+      display: block;
+      text-align: center;
+      background: #2478bd;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-weight: 500;
+    }
+
+    /* 가운데 채팅 입력 박스 */
+    .chat-box {
+      background: #ffffff;
+      border: 4px solid #9ccbf0;
+      border-radius: 24px;
+      padding: 28px;
+      height: 100%;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 45px rgba(1, 41, 112, 0.08);
+    }
+
+    .chat-box h3 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #2478bd;
+      margin-bottom: 25px;
+    }
+
+    .chat-message-space {
+      flex: 1;
+    }
+
+    /* 메시지 입력창과 전송 버튼 */
+    .chat-input-preview {
+      display: flex;
+      gap: 12px;
+      margin-top: 0;
+    }
+
+    .chat-input-preview input {
+      flex: 1;
+      border: 3px solid #d1d5db;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 16px;
+      color: #777777;
+    }
+
+    .chat-input-preview button {
+      border: 0;
+      background: #2478bd;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 0 30px;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    /* 채팅 시 주의사항 카드 */
+    .chat-rule-card {
+      background: #ffffff;
+      border: 4px solid #9ccbf0;
+      border-radius: 24px;
+      padding: 30px 28px;
+      height: 100%;
+      box-shadow: 0 20px 45px rgba(1, 41, 112, 0.08);
+    }
+
+    .chat-rule-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .chat-rule-title i {
+      font-size: 34px;
+      color: #2478bd;
+    }
+
+    .chat-rule-title h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111111;
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .chat-rule-title h3 span {
+      color: #2478bd;
+    }
+
+    .chat-rule-card ul {
+      padding-left: 22px;
+      margin-bottom: 0;
+    }
+
+    .chat-rule-card li {
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+      color: #111111;
+    }
+
+    .chat-rule-card strong {
+      color: #2478bd;
+    }
+
+    @media (max-width: 991px) {
+      .chat-section {
+        padding: 82px 16px 24px;
+      }
+
+      .chat-modal-panel {
+        max-height: calc(100vh - 104px);
+        padding: 40px 20px 24px;
+      }
+
+      .chat-title h2 {
+        font-size: 36px;
+      }
+
+      .chat-title p {
+        font-size: 18px;
+      }
+
+      .chat-box,
+      .chat-rule-card,
+      .chat-item-card {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .chat-title h2 {
+        font-size: 30px;
+      }
+
+      .chat-title p {
+        font-size: 16px;
+      }
+
+      .chat-input-preview {
+        flex-direction: column;
+      }
+
+      .chat-input-preview button {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/main_logo.png" alt="찾아줘 캠퍼스 로고">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">메인</a></li>
+          <li><a class="nav-link scrollto" href="#items">분실물 찾기</a></li>
+          <li><a class="nav-link" href="found-items.html">물건 목록</a></li>
+          <li><a class="nav-link" href="category-search.html">카테고리 검색</a></li>
+          <li><a class="nav-link scrollto" href="#register">등록</a></li>
+          <li><a class="nav-link scrollto" href="#storage">보관 장소 안내</a></li>
+          <li><a class="nav-link chat-open" href="#chat-modal">채팅</a></li>
+          <li><a class="nav-link" href="notice-tips.html">공지·예방 팁</a></li>
+          <li><a class="nav-link scrollto" href="#contact">문의</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">
+            대학생을 위한<br>
+            캠퍼스 분실물 매칭 홈페이지
+          </h1>
+
+          <h2 data-aos="fade-up" data-aos-delay="400">
+            찾아줘 캠퍼스는 교내 분실물과 습득물 정보를 한곳에 모아 학생들이 더 쉽게 물건을 찾을 수 있도록 돕는 홈페이지입니다.
+          </h2>
+
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="#items" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>분실물 찾기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+          <img src="assets/img/main_img.png" class="img-fluid" alt="메인 이미지">
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>서비스 소개</h3>
+              <h2>교내 분실물 정보를 한곳에서<br>확인할 수 있는 홈페이지입니다.</h2>
+              <p>
+                대학생들은 강의실, 도서관, 학생식당, 카페 등 여러 장소를 이동하면서 물건을 잃어버리는 경우가 많습니다.
+                하지만 분실물을 찾으려면 학생지원팀, 경비실, 학과 사무실 등을 따로 확인해야 하는 불편함이 있습니다.
+                찾아줘 캠퍼스!는 이러한 불편함을 줄이기 위해 만들어진 캠퍼스 분실물 안내 홈페이지입니다.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="#features" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>주요 기능 보기</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="서비스 소개 이미지">
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    <!-- End About Section -->
+
+    <!-- ======= Values Section ======= -->
+    <section id="values" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Purpose</h2>
+          <p>홈페이지 제작 목적</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <img src="assets/img/values-1.png" class="img-fluid" alt="">
+              <h3>분실물 정보 통합</h3>
+              <p>
+                교내 여러 장소에 흩어져 있는 분실물과 습득물 정보를 한곳에 모아 제공합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <img src="assets/img/values-2.png" class="img-fluid" alt="">
+              <h3>빠른 확인</h3>
+              <p>
+                물건 종류, 장소, 날짜를 기준으로 원하는 분실물 정보를 쉽게 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+              <img src="assets/img/values-3.png" class="img-fluid" alt="">
+              <h3>보관 장소 안내</h3>
+              <p>
+                학생지원팀, 도서관, 경비실 등 분실물이 보관될 수 있는 장소를 안내합니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Values Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Features</h2>
+          <p>주요 기능</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <img src="assets/img/features.png" class="img-fluid" alt="기능 이미지">
+          </div>
+
+          <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
+            <div class="row align-self-center gy-4">
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>최근 분실물 확인</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>최근 습득물 확인</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>카테고리별 분류</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>분실물 등록</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>습득물 등록</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
+                <div class="feature-box d-flex align-items-center">
+                  <i class="bi bi-check"></i>
+                  <h3>안전 채팅 화면</h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Features Section -->
+
+    <!-- ======= Items Section ======= -->
+    <section id="items" class="services">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Lost & Found</h2>
+          <p>최근 분실물·습득물 목록</p>
+        </header>
+
+        <div class="simple-search-box">
+          <div class="row gy-3">
+            <div class="col-md-4">
+              <input type="text" class="form-control" placeholder="물건명을 입력하세요">
+            </div>
+
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>전체</option>
+                <option>분실물</option>
+                <option>습득물</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>전체 카테고리</option>
+                <option>학생증</option>
+                <option>지갑</option>
+                <option>전자기기</option>
+                <option>우산</option>
+                <option>책</option>
+              </select>
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn btn-primary w-100" type="button">검색</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="lost-found-card">
+              <div class="badge-found">습득물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-headphones"></i>
+              </div>
+              <h3>에어팟 프로</h3>
+              <p>
+                카테고리: 전자기기<br>
+                발견 장소: 도서관 2층 열람실<br>
+                발견 날짜: 2025.04.18<br>
+                특징: 흰색 케이스, 오른쪽 유닛에 작은 스크래치
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="lost-found-card">
+              <div class="badge-lost">분실물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <h3>검정 카드지갑</h3>
+              <p>
+                카테고리: 지갑<br>
+                분실 장소: 학생식당 근처<br>
+                분실 날짜: 2025.04.17<br>
+                특징: 학생증과 교통카드가 들어 있음
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="lost-found-card">
+              <div class="badge-found">습득물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-person-badge"></i>
+              </div>
+              <h3>학생증</h3>
+              <p>
+                카테고리: 학생증<br>
+                발견 장소: 공학관 304호<br>
+                발견 날짜: 2025.04.16<br>
+                특징: 본인 확인 후 수령 가능
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="lost-found-card">
+              <div class="badge-lost">분실물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-cloud-rain"></i>
+              </div>
+              <h3>파란색 장우산</h3>
+              <p>
+                카테고리: 우산<br>
+                분실 장소: 교내 카페<br>
+                분실 날짜: 2025.04.15<br>
+                특징: 손잡이에 흰색 스티커가 붙어 있음
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="lost-found-card">
+              <div class="badge-found">습득물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-book"></i>
+              </div>
+              <h3>전공 교재</h3>
+              <p>
+                카테고리: 책<br>
+                발견 장소: 도서관 1층<br>
+                발견 날짜: 2025.04.14<br>
+                특징: 표지 안쪽에 필기 흔적 있음
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="lost-found-card">
+              <div class="badge-lost">분실물</div>
+              <div class="lost-found-icon">
+                <i class="bi bi-lightning-charge"></i>
+              </div>
+              <h3>노트북 충전기</h3>
+              <p>
+                카테고리: 전자기기<br>
+                분실 장소: 인문관 강의실<br>
+                분실 날짜: 2025.04.13<br>
+                특징: 검정색 C타입 충전기
+              </p>
+              <a href="#chat-modal" class="read-more chat-open">
+                <span>채팅 문의하기</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="found-items.html" class="btn-get-started d-inline-flex align-items-center justify-content-center">
+            <span>더보기</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Items Section -->
+
+    <!-- ======= Register Section ======= -->
+    <section id="register" class="contact">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Register</h2>
+          <p>분실물·습득물 등록하기</p>
+        </header>
+
+        <div class="row gy-4">
+
+          <!-- 분실한 물건을 사용자가 등록하는 폼 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="register-box">
+              <h3>분실물 등록</h3>
+              <p>
+                잃어버린 물건의 이름, 장소, 날짜, 특징을 입력하면<br>다른 학생들이 확인할 수 있습니다.
+              </p>
+
+              <form onsubmit="submitDemoForm(event, '분실물 등록이 완료되었습니다.')">
+                <input type="text" class="form-control" placeholder="물건명 예: 검정 카드지갑" required>
+
+                <select class="form-select" required>
+                  <option value="">카테고리 선택</option>
+                  <option>학생증</option>
+                  <option>지갑</option>
+                  <option>전자기기</option>
+                  <option>우산</option>
+                  <option>책</option>
+                  <option>기타</option>
+                </select>
+
+                <input type="text" class="form-control" placeholder="분실 장소 예: 학생식당 근처" required>
+
+                <input type="date" class="form-control" required>
+
+                <textarea class="form-control" rows="5" placeholder="특징 예: 학생증 포함, 검정색, 스티커 부착 등" required></textarea>
+
+                <input type="file" class="form-control">
+
+                <button type="submit">분실물 등록하기</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- 발견한 물건을 사용자가 등록하는 폼 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="register-box">
+              <h3>습득물 등록</h3>
+              <p>
+                발견한 물건의 발견 장소와 현재 보관 장소를 입력하면<br>주인이 물건을 더 쉽게 찾을 수 있습니다.
+              </p>
+
+              <form onsubmit="submitDemoForm(event, '습득물 등록이 완료되었습니다.')">
+                <input type="text" class="form-control" placeholder="물건명 예: 에어팟, 학생증, 우산" required>
+
+                <select class="form-select" required>
+                  <option value="">카테고리 선택</option>
+                  <option>학생증</option>
+                  <option>지갑</option>
+                  <option>전자기기</option>
+                  <option>우산</option>
+                  <option>책</option>
+                  <option>기타</option>
+                </select>
+
+                <input type="text" class="form-control" placeholder="발견 장소 예: 도서관 2층 열람실" required>
+
+                <input type="text" class="form-control" placeholder="보관 장소 예: 도서관 안내데스크" required>
+
+                <input type="date" class="form-control" required>
+
+                <textarea class="form-control" rows="5" placeholder="특징 예: 흰색 케이스, 이름표 있음, 스크래치 있음 등" required></textarea>
+
+                <input type="file" class="form-control">
+
+                <button type="submit">습득물 등록하기</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Register Section -->
+
+    <!-- ======= Chat Modal ======= -->
+    <section id="chat-modal" class="chat-section" aria-hidden="true" role="dialog" aria-labelledby="chat-modal-title">
+
+      <!-- 화면 위에 뜨는 채팅 팝업 패널 -->
+      <div class="container chat-modal-panel">
+        <button type="button" class="chat-close-btn" aria-label="채팅창 닫기">
+          <i class="bi bi-x"></i>
+        </button>
+
+        <div class="chat-title">
+          <h2 id="chat-modal-title">재학생 <span>안전 채팅</span></h2>
+          <p>“분실자와 습득자가 안전한 교내 장소에서 전달 일정을 정합니다.”</p>
+        </div>
+
+        <div class="row gy-4 align-items-stretch">
+
+          <!-- 채팅 대상 물건 정보 -->
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="chat-item-card">
+              <div class="chat-image-box">
+                <i class="bi bi-image"></i>
+              </div>
+
+              <h3>학생증</h3>
+
+              <p>
+                발견 장소: 중앙도서관 2층<br>
+                발견 날짜: 2026.06.01<br>
+                현재 상태: 보관 중
+              </p>
+
+              <a href="#" class="chat-request-btn">보관 장소로 맡기기 요청</a>
+            </div>
+          </div>
+
+          <!-- 실제 메시지를 입력하는 채팅 영역 -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="chat-box">
+              <h3>습득자와의 채팅</h3>
+
+              <div class="chat-message-space"></div>
+
+              <div class="chat-input-preview">
+                <input type="text" class="chat-message-input" placeholder="메시지를 입력하세요.">
+                <button type="button" class="chat-send-btn">전송</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 안전한 전달을 위한 안내 영역 -->
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="chat-rule-card">
+              <div class="chat-rule-title">
+                <i class="bi bi-shield-check"></i>
+                <h3><span>안전한 거래</span>를 위한 캠퍼스 수칙</h3>
+              </div>
+
+              <ul>
+                <li>학교 이메일 인증을 받은 <strong>재학생만 채팅 가능</strong></li>
+                <li>전화번호 등 개인정보는 <strong>직접 공개하지 않음</strong></li>
+                <li>가능하면 학생지원팀, 도서관, 경비실 등 <strong>안전한 장소</strong>에서 전달</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Chat Modal -->
+
+    <!-- ======= Storage Section ======= -->
+    <section id="storage" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Storage</h2>
+          <p>보관 장소 안내</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <i class="bi bi-building" style="font-size: 48px; color: #4154f1;"></i>
+              <h3>학생지원팀</h3>
+              <p>
+                학생증, 지갑, 전자기기 등 주요 분실물을 보관할 수 있는 대표 장소입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <i class="bi bi-book" style="font-size: 48px; color: #4154f1;"></i>
+              <h3>도서관 안내데스크</h3>
+              <p>
+                도서관에서 발견된 책, 충전기, 이어폰, 필기구 등을 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+              <i class="bi bi-shield-check" style="font-size: 48px; color: #4154f1;"></i>
+              <h3>건물 경비실</h3>
+              <p>
+                각 건물 강의실, 복도, 휴게 공간에서 발견된 물건을 확인할 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Storage Section -->
+
+    <!-- ======= FAQ Section ======= -->
+    <section id="faq" class="faq">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>FAQ</h2>
+          <p>자주 묻는 질문</p>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-6">
+
+            <div class="accordion accordion-flush" id="faqlist1">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    물건을 잃어버렸을 때 어떻게 해야 하나요?
+                  </button>
+                </h2>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    먼저 최근 분실물·습득물 목록을 확인하고, 찾는 물건이 없다면 분실 장소 근처의 경비실이나 학생지원팀에 문의합니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                    습득한 물건은 어디에 맡기면 되나요?
+                  </button>
+                </h2>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    가까운 건물 경비실, 도서관 안내데스크, 학생지원팀 등에 맡길 수 있습니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    현재 채팅 기능은 실제로 동작하나요?
+                  </button>
+                </h2>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    현재는 화면 디자인만 구현한 상태이며, 실제 메시지 저장과 전송 기능은 추후 서버와 데이터베이스 연결이 필요합니다.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="accordion accordion-flush" id="faqlist2">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                    분실물 보관 기간은 어떻게 되나요?
+                  </button>
+                </h2>
+                <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    보관 기간은 학교 규정이나 보관 장소에 따라 다를 수 있으므로 해당 부서에 문의해야 합니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                    개인정보가 포함된 물건은 어떻게 수령하나요?
+                  </button>
+                </h2>
+                <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    학생증, 지갑, 신분증 등은 본인 확인 후 수령할 수 있습니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                    현재 홈페이지에서 실제 등록이 가능한가요?
+                  </button>
+                </h2>
+                <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    현재는 화면 구성 중심의 기본 웹페이지이며, 실제 저장 기능은 추후 JavaScript나 서버 기능을 추가해야 합니다.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End FAQ Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Contact</h2>
+          <p>문의하기</p>
+        </header>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+
+            <div class="row gy-4">
+
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>위치</h3>
+                  <p>학생지원팀<br>도서관 안내데스크</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-clock"></i>
+                  <h3>운영 시간</h3>
+                  <p>평일 09:00 - 18:00<br>주말 및 공휴일 제외</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-envelope"></i>
+                  <h3>이메일</h3>
+                  <p>campus@example.com<br>lostfound@example.com</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-telephone"></i>
+                  <h3>전화</h3>
+                  <p>02-0000-0000<br>내선 1234</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="#" method="post" class="php-email-form">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="이름" required>
+                </div>
+
+                <div class="col-md-6">
+                  <input type="email" class="form-control" name="email" placeholder="이메일" required>
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="제목" required>
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="문의 내용을 입력하세요." required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <button type="submit">문의 보내기</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- End Contact Section -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/main_logo.png" alt="찾아줘 캠퍼스 로고">
+            </a>
+            <p>
+              찾아줘 캠퍼스!는 대학생들이 교내 분실물과 습득물 정보를 쉽게 확인할 수 있도록 제작한 홈페이지입니다.
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>메뉴</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#hero">메인</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#items">분실물 찾기</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="found-items.html">물건 목록</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="category-search.html">카테고리 검색</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#register">등록</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#chat-modal" class="chat-open">채팅</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>안내</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#storage">보관 장소</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#faq">FAQ</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="notice-tips.html">공지·예방 팁</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#contact">문의</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>문의</h4>
+            <p>
+              학생지원팀<br>
+              도서관 안내데스크<br><br>
+              <strong>Phone:</strong> 02-0000-0000<br>
+              <strong>Email:</strong> campus@example.com<br>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>찾아줘 캠퍼스!</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by BootstrapMade
+      </div>
+    </div>
+
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- 간단한 폼 제출 알림 기능 -->
+  <script>
+    // 등록 폼 제출 시 실제 페이지 이동을 막고 완료 알림만 보여줍니다.
+    function submitDemoForm(event, message) {
+      event.preventDefault();
+      alert(message);
+      event.target.reset();
+    }
+
+    // 채팅 팝업과 관련된 요소를 가져옵니다.
+    const chatModal = document.querySelector('#chat-modal');
+    const chatOpenLinks = document.querySelectorAll('.chat-open');
+    const chatCloseBtn = document.querySelector('.chat-close-btn');
+    const chatInput = document.querySelector('.chat-message-input');
+
+    // 채팅 메뉴 또는 채팅 문의하기 버튼을 눌렀을 때 팝업을 엽니다.
+    function openChatModal(event) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      if (!chatModal) {
+        return;
+      }
+
+      const navbar = document.querySelector('#navbar');
+      const navbarToggle = document.querySelector('.mobile-nav-toggle');
+
+      if (navbar && navbar.classList.contains('navbar-mobile')) {
+        navbar.classList.remove('navbar-mobile');
+
+        if (navbarToggle) {
+          navbarToggle.classList.add('bi-list');
+          navbarToggle.classList.remove('bi-x');
+        }
+      }
+
+      chatModal.classList.add('is-open');
+      chatModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('chat-modal-open');
+      chatInput?.focus();
+    }
+
+    // 닫기 버튼, 배경 클릭, ESC 키를 눌렀을 때 채팅 팝업을 닫습니다.
+    function closeChatModal() {
+      if (!chatModal) {
+        return;
+      }
+
+      chatModal.classList.remove('is-open');
+      chatModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('chat-modal-open');
+    }
+
+    // 채팅을 여는 모든 링크에 팝업 열기 기능을 연결합니다.
+    chatOpenLinks.forEach((link) => {
+      link.addEventListener('click', openChatModal);
+    });
+
+    window.addEventListener('load', () => {
+      if (window.location.hash === '#chat-modal') {
+        openChatModal();
+      }
+    });
+
+    chatCloseBtn?.addEventListener('click', closeChatModal);
+
+    // 보관 장소로 맡기기 요청 버튼은 디자인용이므로 페이지 이동을 막습니다.
+    document.querySelectorAll('.chat-request-btn').forEach((link) => {
+      link.addEventListener('click', (event) => event.preventDefault());
+    });
+
+    // 팝업 바깥 어두운 배경을 클릭하면 채팅창을 닫습니다.
+    chatModal?.addEventListener('click', (event) => {
+      if (event.target === chatModal) {
+        closeChatModal();
+      }
+    });
+
+    // ESC 키를 누르면 채팅창을 닫습니다.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && chatModal?.classList.contains('is-open')) {
+        closeChatModal();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>물건 목록 - 찾아줘 캠퍼스!</title>
+  <meta content="교내 분실물과 습득물 목록을 확인하는 페이지" name="description">
+  <meta content="습득물, 분실물, 캠퍼스, 찾아줘 캠퍼스" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Nunito|Poppins" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/campus-pages.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/main_logo.png" alt="찾아줘 캠퍼스 로고">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link" href="index.html#hero">메인</a></li>
+          <li><a class="nav-link" href="index.html#items">분실물 찾기</a></li>
+          <li><a class="nav-link active" href="found-items.html">물건 목록</a></li>
+          <li><a class="nav-link" href="category-search.html">카테고리 검색</a></li>
+          <li><a class="nav-link" href="index.html#register">등록</a></li>
+          <li><a class="nav-link" href="index.html#storage">보관 장소 안내</a></li>
+          <li><a class="nav-link chat-open" href="#chat-modal">채팅</a></li>
+          <li><a class="nav-link" href="notice-tips.html">공지·예방 팁</a></li>
+          <li><a class="nav-link" href="index.html#contact">문의</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container" data-aos="fade-up">
+        <h1>물건 목록</h1>
+        <p>교내 분실물과 습득물을 한곳에서 확인할 수 있습니다. 물건명, 장소, 날짜, 특징을 보고 필요한 항목을 찾아보세요.</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container" data-aos="fade-up">
+        <div class="page-filter">
+          <div class="row gy-3">
+            <div class="col-md-5">
+              <input type="text" class="form-control" placeholder="물건명을 입력하세요">
+            </div>
+            <div class="col-md-4">
+              <select class="form-select">
+                <option>전체 카테고리</option>
+                <option>학생증</option>
+                <option>지갑</option>
+                <option>전자기기</option>
+                <option>우산</option>
+                <option>책</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary w-100" type="button">검색</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge found">습득물</span>
+              <h3>에어팟 프로</h3>
+              <p>카테고리: 전자기기<br>발견 장소: 도서관 2층 열람실<br>발견 날짜: 2025.04.18<br>특징: 흰색 케이스, 오른쪽 유닛에 작은 스크래치</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge lost">분실물</span>
+              <h3>검정 카드지갑</h3>
+              <p>카테고리: 지갑<br>분실 장소: 학생식당 근처<br>분실 날짜: 2025.04.17<br>특징: 학생증과 교통카드가 들어 있음</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge found">습득물</span>
+              <h3>학생증</h3>
+              <p>카테고리: 학생증<br>발견 장소: 공학관 304호<br>발견 날짜: 2025.04.16<br>특징: 본인 확인 후 수령 가능</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge lost">분실물</span>
+              <h3>파란색 장우산</h3>
+              <p>카테고리: 우산<br>분실 장소: 교내 카페<br>분실 날짜: 2025.04.15<br>특징: 손잡이에 흰색 스티커가 붙어 있음</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge found">습득물</span>
+              <h3>전공 교재</h3>
+              <p>카테고리: 책<br>발견 장소: 도서관 1층<br>발견 날짜: 2025.04.14<br>특징: 표지 안쪽에 필기 흔적 있음</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="page-card">
+              <span class="page-badge lost">분실물</span>
+              <h3>노트북 충전기</h3>
+              <p>카테고리: 전자기기<br>분실 장소: 인문관 강의실<br>분실 날짜: 2025.04.13<br>특징: 검정색 C타입 충전기</p>
+              <a href="#chat-modal" class="page-btn chat-open">채팅하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="chat-modal" class="chat-section" aria-hidden="true" role="dialog" aria-labelledby="chat-modal-title">
+    <div class="container chat-modal-panel">
+      <button type="button" class="chat-close-btn" aria-label="채팅창 닫기">
+        <i class="bi bi-x"></i>
+      </button>
+
+      <div class="chat-title">
+        <h2 id="chat-modal-title">재학생 <span>안전 채팅</span></h2>
+        <p>분실자와 습득자가 안전한 교내 장소에서 전달 일정을 정합니다.</p>
+      </div>
+
+      <div class="row gy-4 align-items-stretch">
+        <div class="col-lg-3">
+          <div class="chat-item-card">
+            <div class="chat-image-box">
+              <i class="bi bi-image"></i>
+            </div>
+            <h3>선택한 물건</h3>
+            <p>
+              목록에서 선택한 물건에 대해<br>
+              장소와 전달 방법을 협의합니다.
+            </p>
+            <a href="#" class="chat-request-btn">보관 장소로 맡기기 요청</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="chat-box">
+            <h3>습득자와의 채팅</h3>
+            <div class="chat-message-space"></div>
+            <div class="chat-input-preview">
+              <input type="text" class="chat-message-input" placeholder="메시지를 입력하세요.">
+              <button type="button">전송</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="chat-rule-card">
+            <div class="chat-rule-title">
+              <i class="bi bi-shield-check"></i>
+              <h3><span>안전한 거래</span>를 위한 캠퍼스 수칙</h3>
+            </div>
+            <ul>
+              <li>학교 이메일 인증을 받은 재학생끼리 채팅합니다.</li>
+              <li>전화번호 등 개인정보는 직접 공개하지 않습니다.</li>
+              <li>학생지원팀, 도서관, 경비실 등 안전한 장소에서 전달합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const chatModal = document.querySelector('#chat-modal');
+    const chatOpenLinks = document.querySelectorAll('.chat-open');
+    const chatCloseBtn = document.querySelector('.chat-close-btn');
+    const chatInput = document.querySelector('.chat-message-input');
+
+    function openChatModal(event) {
+      if (event) {
+        event.preventDefault();
+      }
+
+      chatModal.classList.add('is-open');
+      chatModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('chat-modal-open');
+      chatInput?.focus();
+    }
+
+    function closeChatModal() {
+      chatModal.classList.remove('is-open');
+      chatModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('chat-modal-open');
+    }
+
+    chatOpenLinks.forEach((link) => {
+      link.addEventListener('click', openChatModal);
+    });
+
+    chatCloseBtn.addEventListener('click', closeChatModal);
+
+    document.querySelectorAll('.chat-request-btn').forEach((link) => {
+      link.addEventListener('click', (event) => event.preventDefault());
+    });
+
+    chatModal.addEventListener('click', (event) => {
+      if (event.target === chatModal) {
+        closeChatModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && chatModal.classList.contains('is-open')) {
+        closeChatModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
