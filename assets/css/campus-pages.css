@@ -133,17 +133,6 @@ p {
   background: #f6f9ff;
 }
 
-.detail-image {
-  min-height: 300px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #eef3ff, #d9e4ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4154f1;
-  font-size: 76px;
-}
-
 .info-list {
   padding-left: 0;
   list-style: none;
